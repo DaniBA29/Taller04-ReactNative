@@ -1,13 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Game from './components/Game';
 
 export default function App() {
+  const [screen, setScreen] = useState('invader');
   return (
-    <View style={styles.container}>
-      <Game randomNumbers={6} />
-      <StatusBar style="auto" />
-    </View>
+    <TouchableOpacity onPress={setScreen( screen === 'flag'? 'invader' : 'flag' )}>
+      <View style={styles.container}>
+        {screen === 'invader'?
+          <Game randomNumbers={6} />
+        :
+          <StatusBar style="auto" />
+        }
+      </View>
+    </TouchableOpacity>
   );
 }
 
